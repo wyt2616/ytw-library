@@ -45,7 +45,7 @@
             </div>
             <div class="col-sm-6">
               <label for="gender" class="form-label">Gender</label>
-              <select class="form-select" id="gender" v-model="formData.gender">
+              <select class="form-select" id="gender" required v-model="formData.gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -57,6 +57,7 @@
             <textarea
               class="form-control"
               id="reason"
+              required
               rows="3"
               v-model="formData.reason"
             ></textarea>
@@ -67,6 +68,17 @@
           </div>
         </form>
       </div>
+    </div>
+  </div>
+  <div class="row mt-5" v-if="submittedCards.length">
+    <div class="card">
+      <DataTable :value="submittedCards" tableStyle="min-width: 50rem">
+        <Column field="username" header="Username"></Column>
+        <Column field="password" header="Password"></Column>
+        <Column field="isAustralian" header="isAustralian"></Column>
+        <Column field="reason" header="Reason"></Column>
+        <Column field="gender" header="Gender"></Column>
+      </DataTable>
     </div>
   </div>
 
@@ -96,6 +108,8 @@
 <script setup>
 // import { buildSlots } from '@vue/compiler-core'
 import { ref } from 'vue'
+import DataTable from 'primevue/datatable'
+import Column from 'primevue/column'
 
 const formData = ref({
   username: '',
