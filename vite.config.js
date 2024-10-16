@@ -15,6 +15,6 @@ export default defineConfig({
     }
   },
   base: process.env.NODE_ENV === 'production'
-    ? '/wyt2616/'  // Set base path for production
+    ? '/ytw-library/'  // Set base path for production
     : '/'  // Base path for development
 });
